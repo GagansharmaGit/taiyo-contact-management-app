@@ -1,0 +1,60 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../store/store';
+import { Link, useNavigate } from 'react-router-dom';
+import { delContact } from '../store/contactSlice';
+
+const ShowContacts: React.FC = () => {
+  const contacts = useSelector((state: RootState) => state.contacts.contacts);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleDelete = (id: string) => {
+    dispatch(delContact(id));
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-full p-4 mt-16">
+      <div className="fixed top-4">
+        <Link
+          to="/add-contact"
+          className="inline-block rounded bg-slate-500 text-white py-2 px-4 hover:bg-blue-600"
+        >
+          Create Contact
+        </Link>
+      </div>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        {contacts.length === 0 ? (
+          <p>No Contact Found. Please add a contact.</p>
+        ) : (
+          contacts.map(contact => (
+            <div key={contact.id} className="bg-white shadow-md rounded p-4 flex flex-col items-center w-56">
+              <div className="w-20 h-12 bg-gray-300 mb-2 flex items-center justify-center">
+                {/* Placeholder for image */}
+              </div>
+              <p className="font-semibold text-lg">{contact.firstname} {contact.lastname}</p>
+              <p className="text-gray-500 mb-4">{contact.mobileNo}</p>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => navigate(`/edit-contact/${contact.id}`)}
+                  className="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(contact.id)}
+                  className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ShowContacts;

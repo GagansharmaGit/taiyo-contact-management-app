@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import AddContact from './components/AddContact';
+import LeftSidebar from './components/LeftSidebar';
+import ShowContacts from './components/ShowContacts';
+import UI from './components/UI';
+import ChartAndMap from './components/ChartAndMap';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<UI />} >
+        <Route index element={<ShowContacts />} />
+        <Route path="contacts" element={<ShowContacts />} />
+        <Route path="charts-and-maps" element={<ChartAndMap />} />
+        <Route path="add-contact" element={<AddContact />} />
+        <Route path="edit-contact/:id" element={<AddContact isEditMode={true} />} />
+
+      </Route>
+      
+    </Routes>
   );
 }
+
+
 
 export default App;
