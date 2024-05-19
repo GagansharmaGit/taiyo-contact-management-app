@@ -1,5 +1,7 @@
 //It is used to design the World Map Page layout
 import { Marker, Popup } from "react-leaflet"
+import 'leaflet/dist/leaflet.css';
+
 import L from 'leaflet';
 import React from 'react';
 import markerIcon from '../utils/marker_icon.png';
@@ -42,3 +44,4 @@ const WMap: React.FC<WMapProps> = ({ countriesData }) => {
 }
 
 export default WMap;
+
