@@ -82,37 +82,37 @@ const ChartAndMap: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full pt-20 px-4 pb-8 bg-slate-300">
+    <div className="w-full pt-20 px-4 pb-8">
       <h2 className="text-2xl text-white font-bold mb-4 text-center">
         <h1 className="rounded-full text-center shadow-slate-700 bg-slate-700 p-3 text-2xl mx-auto">
-          Corona Cases
+          Corona Cases Line Graph
         </h1>
       </h2>
-      <div className="border-2 border-green-600 w-11/12 mx-auto mb-10">
+      <div className="border-2 border-teal-600 w-11/12 mx-auto mb-10">
         {chartData.datasets.length > 0 ? (
           <Line data={chartData} />
         ) : (
-          <h1 className="text-green-600 mb-4 font-bold text-2xl">Loading...</h1>
+          <h1 className="text-pink-600 mb-4 font-bold text-2xl">Loading...</h1>
         )}
       </div>
       <h2 className="text-xl text-white font-bold mb-4 text-center">
         <h1 className="rounded-full text-center shadow-slate-700 bg-slate-700 p-3 text-2xl mx-auto">
-          Corona Cases Map
+        Corona Cases World Map
         </h1>
       </h2>
       <div className="h-96 border-2 border-blue-500 w-11/12 mx-auto mb-5">
         <MapContainer
-          className="m-auto w-full h-full border-blue-700"
-          bounds={[[-60, -180], [85, 180]]}
-          zoom={2}
-          center={[20, 40]}
-          scrollWheelZoom={true}
+            className="m-auto w-full h-full border-blue-700"
+            bounds={[[-60, -180], [85, 180]]}
+            zoom={2}
+            center={[0, 0]}
+            scrollWheelZoom={true}
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-          />
-          <WMap countriesData={countriesData} />
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+            />
+            <WMap countriesData={countriesData} />
         </MapContainer>
       </div>
     </div>

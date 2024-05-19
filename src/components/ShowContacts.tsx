@@ -29,12 +29,18 @@ const ShowContacts: React.FC = () => {
           <p>No Contact Found. Please add a contact.</p>
         ) : (
           contacts.map(contact => (
-            <div key={contact.id} className="bg-white shadow-md rounded p-4 flex flex-col items-center w-56">
-              <div className="w-20 h-12 bg-gray-300 mb-2 flex items-center justify-center">
-                {/* Placeholder for image */}
-              </div>
+            <div key={contact.id} className="bg-slate-300 shadow-md rounded p-4 flex flex-col items-center w-56">
+              <img 
+                src="https://via.placeholder.com/40" 
+                alt="Contact" 
+                className="w-12 h-12 rounded-full mb-2"
+              />
               <p className="font-semibold text-lg">{contact.firstname} {contact.lastname}</p>
+              
               <p className="text-gray-500 mb-4">{contact.mobileNo}</p>
+              <p className={`text-gray-500 mb-2 ${contact.isActive ? 'text-green-500' : 'text-red-500'}`}>
+                {contact.isActive ? 'Active' : 'Inactive'}
+              </p>
               <div className="flex space-x-2">
                 <button
                   onClick={() => navigate(`/edit-contact/${contact.id}`)}
