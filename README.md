@@ -1,46 +1,187 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Deliverable Documentation
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deliverable Overview
+#### 1. Contact Management App with Maps and Charts
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+•A fully functional contact management application built using ReactJS,
+TypeScript, TailwindCSS, React Router v6, and React Query.
 
-### `npm test`
+• Includes features for adding, viewing, editing, and deleting contacts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+• MapAndChart with a line graph showing COVID-19 cases fluctuations and a
+React Leaflet map displaying COVID-19 data by country.
 
-### `npm run build`
+• Deployed Link: Taiyo Contact Management App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+• LINK : https://taiyo-contact-management-app.vercel.app/
+## Commented Code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+• All code should be well-documented with comments explaining the
+functionality and logic used.
+## Documentation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+• Detailed instructions on how to run the application.
 
-### `npm run eject`
+• Information on the API endpoints used, including the data    format returned by
+the APIs.
+# Steps to Start the Program
+## Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+• Node.js (v14 or later)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+• npm
+## Installation Steps
+### 1. Clone the Repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+git clone <https://github.com/GagansharmaGit/taiyo-contact-management-
+app.git>
+## Installation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Install Project
 
-## Learn More
+```bash
+  git clone <https://github.com/GagansharmaGit/taiyo-contact-management-
+app.git>
+```
+    
+### 2. Install Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+```bash
+  npm install
+```
+
+
+### 3. Start the Development Server
+
+```bash
+npm start
+```
+### 4. Build for Production (optional)
+
+```bash
+npm run build
+```
+### 5. Running the Application
+
+• After running npm start, the application will be available at
+
+• http://localhost:3000.
+
+• For the production build, deploy the contents of the build directory to a static
+hosting service like Vercel, GitHub Pages, or Heroku.
+# API Endpoints and Data Format
+## API Endpoints
+
+### 1. World Wide Data of Cases
+
+• URL: https://disease.sh/v3/covid-19/all
+
+• Description: Provides global COVID-19 data.
+
+• Response Format:
+```bash
+{
+    "cases": 123456789,
+    "deaths": 1234567,
+    "recovered": 12345678,
+    "active": 12345678,
+    ... 
+}
+```
+
+
+### 2. Country Specific Data of Cases
+
+• URL: https://disease.sh/v3/covid-19/countries
+
+• Description: Provides COVID-19 data for all countries.
+
+• Response Format:
+
+```bash
+[
+    {
+        "country": "USA",
+        "cases": 123456789,
+        "deaths": 1234567,
+        "recovered": 12345678,
+        "active": 12345678,
+        "countryInfo": {        
+            "lat": 37.0902,
+            "long":-95.7129,
+        ... }, 
+... }, 
+]
+```
+### 3. Graph Data for Cases with Date
+
+• URL: https://disease.sh/v3/covid-19/historical/all?lastdays=all
+
+• Description: Provides historical data of COVID-19 cases worldwide.
+
+• Response Format:
+```bash
+{
+    "cases": {
+    "1/22/20": 555,
+    "1/23/20": 654,
+    ... },
+    "deaths": {
+    "1/22/20": 17,
+    "1/23/20": 18,
+    ... },
+    "recovered": {
+    “1/22/20": 28,
+    "1/23/20": 30,
+    .. }
+}
+```
+
+# Code Structure
+### 1. Components
+
+• AddContact.tsx : Form component for adding and editing contacts.
+
+• ShowContacts.tsx: Displays the list of contacts and shows detailed information of a contact.
+
+• ChartAndMap.tsx: Displays the line graph and map.
+### 2. API Calls
+
+• https://disease.sh/v3/covid-19/historical/all?lastdays=all:
+Custom hook using React Query to fetch global COVID-19 data.
+
+• https://disease.sh/v3/covid-19/countries: Query to fetch country-
+specific COVID-19 data.
+### 3. State Management
+
+• Using Redux for managing contact data.
+
+• Using React Query for managing remote data fetching.
+### 4. Styling
+
+• TailwindCSS for styling components to ensure responsiveness and modern
+UI design.
+# Deployment
+### 1. Vercel
+
+• Install the Vercel CLI.
+
+• Run vercel in the project root and follow the prompts.
+### 2. GitHub Pages
+
+• Build the project using npm run build.
+
+• Deploy the build directory using the gh-pages branch or using GitHub
+Actions.
+### 3. Heroku
+
+• Create a Heroku app using the Heroku CLI.
+
+• Push the project to the Heroku remote repository for deployment.
+# By following this guide, you will be able to set up, run, and understand the API usage in the contact management app with maps and charts.
